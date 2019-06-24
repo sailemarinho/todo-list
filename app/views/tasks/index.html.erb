@@ -1,0 +1,27 @@
+<h1>My tasks</h1>
+
+<% if @tasks.empty? %>
+  <p>You currently do not have any tasks.</p>
+<% else %>
+  <% @tasks.each do |task| %>
+
+    <% if task.completed == true %>
+    <input type="checkbox" checked>
+    <% else %>
+      <input type="checkbox">
+    <% end %>
+
+    <%= link_to task.title, task_path(task) %>
+
+    <%= link_to "Delete", task_path(task),
+        method: :delete,
+        data: { confirm: "Delete" + " " + task.title + "?" } %>
+    </br>
+
+
+  <% end %>
+<% end %>
+
+<div class="btn btn-primary">
+  <%= link_to '+ Add a new task', new_task_path %>
+</div>

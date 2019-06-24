@@ -11,3 +11,21 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+body {
+  height: 100vh;
+}
+.container {
+  background-color: white;
+  max-height: 100vh;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+.btn {
+  opacity: 0.7;
+  & a {
+  color: white;
+  font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
