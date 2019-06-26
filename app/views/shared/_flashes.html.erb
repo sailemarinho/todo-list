@@ -1,5 +1,6 @@
 <% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+<% color = ['#7B68EE', '#800000', '#2F4F4F', '#6A5ACD'].sample %>
+  <div class="alert alert-info alert-dismissible fade show m-1" role="alert" style="background-color: <%= color %>; color: white; font-weight: bold;">
     <%= notice %>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -7,7 +8,7 @@
   </div>
 <% end %>
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert" style="background-color: <%= color %>; color: white; font-weight: bold;">
     <%= alert %>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>

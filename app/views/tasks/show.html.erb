@@ -1,9 +1,17 @@
-<h1><%= @task.title %></h1>
-<%= link_to "Edit this task", edit_task_path %>
-<p><%= @task.details %></p>
- <% if @task.completed == true %>
-  <p><input type="checkbox" checked>This task is completed</p>
-  <% else %>
-  <p><input type="checkbox">This task is not completed yet</p>
-  <% end %>
-<%= link_to "Back to list", tasks_path %>
+<%= render 'shared/navbar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-4 col-sm-offset-4">
+      <h1><%= @task.title %></h1>
+
+      <h5 style="margin-top: 30px; margin-bottom: 20px;"><%= @task.details %></h5>
+       <% if @task.completed %>
+        <p><input type="checkbox" checked> Completed</p>
+        <% else %>
+        <p><input type="checkbox">This task is not done yet</p>
+        <% end %>
+        <%= link_to "Edit", edit_task_path, class: "btn btn-outline-primary btn-block" %>
+       <%= link_to 'Back', tasks_path, class: "btn btn-outline-dark btn-block" %>
+    </div>
+  </div>
+</div>

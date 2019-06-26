@@ -1,27 +1,36 @@
-<h1>My tasks</h1>
+<%= render 'shared/navbar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-4 col-sm-offset-4">
+      <h1>My tasks</h1>
 
-<% if @tasks.empty? %>
-  <p>You currently do not have any tasks.</p>
-<% else %>
-  <% @tasks.each do |task| %>
+      <% if @tasks.empty? %>
+        <h5>You currently do not have any tasks.</h5>
+      <% else %>
+          <% @tasks.each do |task| %>
+        <div class="d-flex justify-content-space-around align-items-baseline">
+            <div>
+              <h5>
+                <%= link_to task.title, task_path(task), style: "color: black; text-decoration: none;" %>
+                <% if task.completed %>
+                  <input type="checkbox" checked>
+                <% else %>
+                  <input type="checkbox">
+                <% end %>
+              </h5>
+            </div>
+            <div>
+            <%= link_to "Delete", task_path(task),
+                method: :delete,
+                data: { confirm: "Delete" + " " + task.title + "?" }, class: "btn btn-outline-danger m-2" %>
+            </div>
+        </div>
+          <% end %>
+      <% end %>
 
-    <% if task.completed == true %>
-    <input type="checkbox" checked>
-    <% else %>
-      <input type="checkbox">
-    <% end %>
-
-    <%= link_to task.title, task_path(task) %>
-
-    <%= link_to "Delete", task_path(task),
-        method: :delete,
-        data: { confirm: "Delete" + " " + task.title + "?" } %>
-    </br>
-
-
-  <% end %>
-<% end %>
-
-<div class="btn btn-primary">
-  <%= link_to '+ Add a new task', new_task_path %>
+      <div class="btn btn-primary mt-3">
+        <%= link_to '+ Add a new task', new_task_path %>
+      </div>
+    </div>
+  </div>
 </div>

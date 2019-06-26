@@ -23,6 +23,17 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
+    event = Event.new
+    # color = i%['#7B68EE', '#800000', '#2F4F4F', '#6A5ACD']
+    if @task.completed
+      event.user_data = { Congratulations: { color: "blue", message: "boa"} }
+      flash[:notice] = ['Congratulations!', 'Nice job!', 'Good Work!', 'Nicely done!', 'Way to go!'].sample
+    else
+      event.user_data = { Shame: { color: "blue", message: "boa"} }
+      flash[:notice] = ['Oops..!', 'You can do it!', 'Work hard!', 'What a pitty...', 'Try again...'].sample
+    end
+    event.task = @task
+    event.save
 
     redirect_to task_path(@task)
   end
@@ -43,4 +54,3 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 end
-
