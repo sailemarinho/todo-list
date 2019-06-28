@@ -21,8 +21,7 @@ class TasksController < ApplicationController
   def edit
   end
 
-  def update
-    @task.update(task_params)
+  def flash_alert
     event = Event.new
     @color = ['#7B68EE', '#800000', '#2F4F4F', '#6A5ACD'].sample
     @message_congrats = ['Congratulations!', 'Nice job!', 'Good Work!', 'Nicely done!', 'Way to go!'].sample
@@ -38,6 +37,12 @@ class TasksController < ApplicationController
 
     event.task = @task
     event.save
+  end
+
+  def update
+    @task.update(task_params)
+
+    flash_alert
 
     redirect_to task_path(@task)
   end
