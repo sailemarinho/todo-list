@@ -26,7 +26,6 @@ class TasksController < ApplicationController
     @color = ['#7B68EE', '#800000', '#2F4F4F', '#6A5ACD'].sample
     @message_congrats = ['Congratulations!', 'Nice job!', 'Good Work!', 'Nicely done!', 'Way to go!'].sample
     @message_shame = ['Oops..!', 'You can do it!', 'Work hard!', 'What a pitty...', 'Try again...'].sample
-
     if @task.completed
       flash[:notice] = @message_congrats
       event.user_data = { Congratulations: { color: @color, message: flash } }
@@ -34,7 +33,6 @@ class TasksController < ApplicationController
       flash[:notice] = @message_shame
       event.user_data = { Shame: { color: @color, message: flash } }
     end
-
     event.task = @task
     event.save
   end
