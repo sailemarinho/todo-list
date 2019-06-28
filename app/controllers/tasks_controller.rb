@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: %i[show edit update destroy]
 
   def index
     @tasks = Task.all
@@ -24,14 +24,18 @@ class TasksController < ApplicationController
   def update
     @task.update(task_params)
     event = Event.new
-    # color = i%['#7B68EE', '#800000', '#2F4F
+    @color = ['#7B68EE', '#800000', '#2F4F4F', '#6A5ACD'].sample
+    @message_congrats = ['Congratulations!', 'Nice job!', 'Good Work!', 'Nicely done!', 'Way to go!'].sample
+    @message_shame = ['Oops..!', 'You can do it!', 'Work hard!', 'What a pitty...', 'Try again...'].sample
+
     if @task.completed
-      event.user_data = { Congratulations: { color: "blue", message: "boa"} }
-      flash[:notice] = ['Congratulations!', 'Nice job!', 'Good Work!', 'Nicely done!', 'Way to go!'].sample
+      flash[:notice] = @message_congrats
+      event.user_data = { Congratulations: { color: @color, message: flash } }
     else
-      event.user_data = { Shame: { color: "blue", message: "boa"} }
-      flash[:notice] = ['Oops..!', 'You can do it!', 'Work hard!', 'What a pitty...', 'Try again...'].sample
+      flash[:notice] = @message_shame
+      event.user_data = { Shame: { color: @color, message: flash } }
     end
+
     event.task = @task
     event.save
 
