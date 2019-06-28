@@ -1,5 +1,6 @@
 .banner {
   background-size: cover;
+  background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/3299/postit-scrabble-to-do.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
   padding: 150px 0;
   height: 100%;
   width: 100%;
@@ -8,20 +9,23 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: white;
+
+  & a {
+    color: white;
+  }
 }
 
 .banner h1 {
-  margin: 10%;
-  color: white;
+  margin: 2%;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
 }
 
 .banner p {
-  margin: 5%;
+  margin: 2%;
   font-size: 20px;
-  color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }

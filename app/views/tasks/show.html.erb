@@ -3,15 +3,14 @@
   <div class="row">
     <div class="col-12 col-sm-4 col-sm-offset-4">
       <h1><%= @task.title %></h1>
-
-      <h5 style="margin-top: 30px; margin-bottom: 20px;"><%= @task.details %></h5>
-       <% if @task.completed %>
-        <p><input type="checkbox" checked> Completed</p>
+      <h5><%= @task.details %></h5>
+        <% if @task.completed %>
+          <input type="checkbox" checked> Completed!
         <% else %>
-        <p><input type="checkbox">This task is not done yet</p>
+          <input type="checkbox"> This task is not done yet.
         <% end %>
-        <%= link_to "Edit", edit_task_path, class: "btn btn-outline-primary btn-block" %>
-       <%= link_to 'Back', tasks_path, class: "btn btn-outline-dark btn-block" %>
+      <%= link_to "Edit", edit_task_path, class: "btn btn-outline-primary btn-block" %>
+      <%= link_to 'Back', tasks_path, class: "btn btn-outline-dark btn-block" %>
     </div>
   </div>
 </div>

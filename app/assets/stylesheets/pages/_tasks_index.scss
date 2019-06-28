@@ -1,0 +1,18 @@
+.tasks {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 24px;
+  margin-bottom: 16px;
+
+  & a {
+    color: black;
+    text-decoration: none;
+  }
+
+  & .btn {
+    color: red;
+    padding: 5px;
+  }
+}
+

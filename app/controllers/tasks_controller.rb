@@ -24,7 +24,7 @@ class TasksController < ApplicationController
   def update
     @task.update(task_params)
     event = Event.new
-    # color = i%['#7B68EE', '#800000', '#2F4F4F', '#6A5ACD']
+    # color = i%['#7B68EE', '#800000', '#2F4F
     if @task.completed
       event.user_data = { Congratulations: { color: "blue", message: "boa"} }
       flash[:notice] = ['Congratulations!', 'Nice job!', 'Good Work!', 'Nicely done!', 'Way to go!'].sample

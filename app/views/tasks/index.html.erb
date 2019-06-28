@@ -3,34 +3,24 @@
   <div class="row">
     <div class="col-12 col-sm-4 col-sm-offset-4">
       <h1>My tasks</h1>
-
       <% if @tasks.empty? %>
         <h5>You currently do not have any tasks.</h5>
       <% else %>
           <% @tasks.each do |task| %>
-        <div class="d-flex justify-content-space-around align-items-baseline">
-            <div>
-              <h5>
-                <%= link_to task.title, task_path(task), style: "color: black; text-decoration: none;" %>
-                <% if task.completed %>
-                  <input type="checkbox" checked>
-                <% else %>
-                  <input type="checkbox">
-                <% end %>
-              </h5>
+            <div class="tasks">
+              <%= link_to task.title, task_path(task) %>
+              <% if task.completed %>
+                <input type="checkbox" checked>
+              <% else %>
+                <input type="checkbox">
+              <% end %>
+              <%= link_to "Delete", task_path(task),
+                  method: :delete,
+                  data: { confirm: "Delete" + " " + task.title + "?" }, class: "btn btn-outline-danger" %>
             </div>
-            <div>
-            <%= link_to "Delete", task_path(task),
-                method: :delete,
-                data: { confirm: "Delete" + " " + task.title + "?" }, class: "btn btn-outline-danger m-2" %>
-            </div>
-        </div>
           <% end %>
       <% end %>
-
-      <div class="btn btn-primary mt-3">
-        <%= link_to '+ Add a new task', new_task_path %>
+      <%= link_to '+ Add a new task', new_task_path, class: "btn btn-primary" %>
       </div>
-    </div>
   </div>
 </div>
